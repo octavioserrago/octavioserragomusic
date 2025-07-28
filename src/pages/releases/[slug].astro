@@ -1,0 +1,116 @@
+---
+import { releases } from "../../data/releases.js";
+import "../../styles/global.css";
+
+export async function getStaticPaths() {
+    return releases.map((release) => ({
+        params: { slug: release.slug },
+    }));
+}
+
+const { slug } = Astro.params;
+const release = releases.find((r) => r.slug === slug);
+
+if (!release) {
+    throw new Error("Release not found");
+}
+---
+
+<head>
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+</head>
+
+<section
+    class="min-h-screen flex items-center justify-center bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-700 px-4"
+>
+    <div
+        class="w-full max-w-lg bg-white/10 border border-white/10 rounded-2xl shadow-2xl p-8 text-white backdrop-blur-lg"
+    >
+        <img
+            src={release.cover}
+            alt={release.title}
+            class="w-56 h-56 mx-auto object-contain rounded-xl mb-8 shadow-lg bg-neutral-900 border border-white/10"
+        />
+
+        <h1 class="text-4xl font-extrabold mb-2 tracking-tight">
+            {release.title}
+        </h1>
+        <p class="text-xs uppercase tracking-widest text-gray-400 mb-6">
+            {release.type}
+        </p>
+
+        <ul
+            class="mb-8 text-left list-disc list-inside text-base text-gray-200 space-y-1 px-4"
+        >
+            {release.tracks.map((track) => <li>{track}</li>)}
+        </ul>
+
+        <div class="flex justify-center gap-8 mb-2">
+            {
+                release.spotify && (
+                    <a
+                        href={release.spotify}
+                        target="_blank"
+                        rel="noopener"
+                        class="group flex flex-col items-center hover:text-green-400 transition"
+                    >
+                        <span class="bg-neutral-800 p-4 rounded-full shadow-lg group-hover:bg-green-900 transition">
+                            <i class="fab fa-spotify fa-2x" />
+                        </span>
+                        <span class="text-xs mt-2 opacity-80">Spotify</span>
+                    </a>
+                )
+            }
+            {
+                release.apple && (
+                    <a
+                        href={release.apple}
+                        target="_blank"
+                        rel="noopener"
+                        class="group flex flex-col items-center hover:text-pink-400 transition"
+                    >
+                        <span class="bg-neutral-800 p-4 rounded-full shadow-lg group-hover:bg-pink-900 transition">
+                            <i class="fab fa-apple fa-2x" />
+                        </span>
+                        <span class="text-xs mt-2 opacity-80">Apple Music</span>
+                    </a>
+                )
+            }
+            {
+                release.youtube && (
+                    <a
+                        href={release.youtube}
+                        target="_blank"
+                        rel="noopener"
+                        class="group flex flex-col items-center hover:text-red-500 transition"
+                    >
+                        <span class="bg-neutral-800 p-4 rounded-full shadow-lg group-hover:bg-red-900 transition">
+                            <i class="fab fa-youtube fa-2x" />
+                        </span>
+                        <span class="text-xs mt-2 opacity-80">YouTube</span>
+                    </a>
+                )
+            }
+            {
+                release.amazon && (
+                    <a
+                        href={release.amazon}
+                        target="_blank"
+                        rel="noopener"
+                        class="group flex flex-col items-center hover:text-yellow-400 transition"
+                    >
+                        <span class="bg-neutral-800 p-4 rounded-full shadow-lg group-hover:bg-yellow-900 transition">
+                            <i class="fab fa-amazon fa-2x" />
+                        </span>
+                        <span class="text-xs mt-2 opacity-80">
+                            Amazon Music
+                        </span>
+                    </a>
+                )
+            }
+        </div>
+    </div>
+</section>

@@ -1,16 +1,48 @@
 ---
-
+import Hero from "../components/Hero.astro";
+import About from "../components/About.astro";
+import Music from "../components/Music.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
 ---
 
+<!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Official page of Octavio Serrago, country and bluegrass artist"
+        />
+        <title>Inicio</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+            integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+    </head>
+    <body class="font-sans text-white scroll-smooth relative">
+        <!-- Fondo con overlay -->
+        <div class="fixed inset-0 -z-10">
+            <img
+                src="/fotolanding.jpg"
+                alt="Fondo"
+                class="w-full h-full object-cover"
+            />
+            <div class="absolute inset-0 bg-black/30"></div>
+        </div>
+
+        <!-- Hero Section -->
+        <Hero />
+
+        <!-- Music Section -->
+        <Music />
+
+        <!-- Footer -->
+        <Footer />
+    </body>
 </html>

@@ -1,0 +1,46 @@
+export const releases = [
+    {
+        slug: "the-first-day-of-spring",
+        title: "The First Day of Spring",
+        cover: "/tfdos.jpg",
+        type: "Single",
+        tracks: ["The First Day of Spring"],
+        spotify: "https://open.spotify.com/intl-es/track/0hSMaOw0REFg7TlFvWVvjD?si=9a736a646513471b",
+        apple: "https://music.apple.com/ar/album/the-first-day-of-spring/1584058859?i=1584058860",
+        youtube: "https://youtube.com/@octavioserragomusic",
+        amazon: "https://music.amazon.com/albums/B09VZ3XQ5F?trackAsin=B09VZ3XQ5F",
+    },
+    {
+        slug: "lost",
+        title: "Lost",
+        cover: "/lost.jpg",
+        type: "EP",
+        tracks: ["Lost", "I'll find a way", "Black river"],
+        spotify: "https://open.spotify.com/intl-es/album/5pVIFM9Rf8S59gKKjohan5?si=eyexSDMoQQauM_pBoc4ang",
+        apple: "https://music.apple.com/ar/album/lost-single/1614042716",
+        youtube: "https://youtube.com/@octavioserragomusic",
+        amazon: "https://music.amazon.es/albums/B09VD5CYX7?marketplaceId=A1RKKUPIHCS9HS&musicTerritory=ES&ref=dm_sh_GLo1zPcvQUhK3MfOUJVJHaJy3",
+    },
+    {
+        slug: "cowpoke",
+        title: "Cowpoke",
+        cover: "/cowpoke.jpg",
+        type: "Single",
+        tracks: ["Cowpoke"],
+        spotify: "https://open.spotify.com/intl-es/track/6vlktoj4tRgI4dQVFyiWcX?si=c1fa718a12344574",
+        apple: "https://music.apple.com/ar/album/cowpoke-feat-rodrigo-casta%C3%B1o-single/1763265742",
+        youtube: "https://youtube.com/@octavioserragomusic",
+        amazon: "https://music.amazon.es/albums/B0DDD6V5X1?marketplaceId=A1RKKUPIHCS9HS&musicTerritory=ES&ref=dm_sh_9yiQuWuLEIT808BozhG5kEfwy"
+    },
+    {
+        slug: "good-morning-son",
+        title: "Good morning son",
+        cover: "/Good-morning-son.jpg",
+        type: "Single",
+        tracks: ["Good morning son"],
+        spotify: "https://open.spotify.com/intl-es/track/2KgLhgXKTl0cEg5BR13pfd?si=7a6d173820474346",
+        apple: "https://music.apple.com/ar/album/good-morning-son-single/1786834453",
+        youtube: "https://youtube.com/@octavioserragomusic",
+        amazon: "https://music.amazon.es/albums/B0DRWK5GSK?marketplaceId=A1RKKUPIHCS9HS&musicTerritory=ES&ref=dm_sh_MzPkee5F6mFvOLlM9koFDbfQc"
+    },
+];
