@@ -27,17 +27,15 @@ if (!release) {
     class="px-2 pt-8 pb-12 md:pt-16 md:pb-20 md:min-h-screen md:flex md:items-center md:justify-center bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-700"
 >
     <div
-        class="w-full max-w-md sm:max-w-lg bg-white/10 border border-white/10 rounded-2xl shadow-2xl p-8 sm:p-10 text-white backdrop-blur-lg"
+        class="w-full bg-white/10 border border-white/10 rounded-2xl shadow-2xl p-6 sm:p-10 text-white backdrop-blur-lg"
     >
         <img
             src={release.cover}
             alt={release.title}
-            class="w-96 h-96 sm:w-64 sm:h-64 mx-auto object-contain rounded-xl mb-10 shadow-lg bg-neutral-900 border border-white/10"
+            class="w-full max-w-[90%] mx-auto h-auto aspect-square object-contain rounded-xl mb-10 shadow-lg bg-neutral-900 border border-white/10"
         />
 
-        <h1
-            class="text-6xl sm:text-5xl font-extrabold mb-4 tracking-tight text-center"
-        >
+        <h1 class="text-6xl font-extrabold mb-4 tracking-tight text-center">
             {release.title}
         </h1>
         <p
@@ -47,7 +45,7 @@ if (!release) {
         </p>
 
         <ul
-            class="mb-10 text-left list-disc list-inside text-lg sm:text-xl text-gray-200 space-y-2 px-4 sm:px-6"
+            class="mb-10 text-left list-disc list-inside text-lg sm:text-xl text-gray-200 space-y-3 px-4 sm:px-6"
         >
             {release.tracks.map((track) => <li>{track}</li>)}
         </ul>
@@ -61,8 +59,8 @@ if (!release) {
                         rel="noopener"
                         class="group flex flex-col items-center hover:text-green-400 transition"
                     >
-                        <span class="bg-neutral-800 p-5 rounded-full shadow-lg group-hover:bg-green-900 transition">
-                            <i class="fab fa-spotify fa-3x" />
+                        <span class="bg-neutral-800 p-6 rounded-full shadow-lg group-hover:bg-green-900 transition">
+                            <i class="fab fa-spotify fa-4x" />
                         </span>
                         <span class="text-sm mt-3 opacity-80">Spotify</span>
                     </a>
@@ -76,8 +74,8 @@ if (!release) {
                         rel="noopener"
                         class="group flex flex-col items-center hover:text-pink-400 transition"
                     >
-                        <span class="bg-neutral-800 p-5 rounded-full shadow-lg group-hover:bg-pink-900 transition">
-                            <i class="fab fa-apple fa-3x" />
+                        <span class="bg-neutral-800 p-6 rounded-full shadow-lg group-hover:bg-pink-900 transition">
+                            <i class="fab fa-apple fa-4x" />
                         </span>
                         <span class="text-sm mt-3 opacity-80">Apple Music</span>
                     </a>
@@ -91,8 +89,8 @@ if (!release) {
                         rel="noopener"
                         class="group flex flex-col items-center hover:text-red-500 transition"
                     >
-                        <span class="bg-neutral-800 p-5 rounded-full shadow-lg group-hover:bg-red-900 transition">
-                            <i class="fab fa-youtube fa-3x" />
+                        <span class="bg-neutral-800 p-6 rounded-full shadow-lg group-hover:bg-red-900 transition">
+                            <i class="fab fa-youtube fa-4x" />
                         </span>
                         <span class="text-sm mt-3 opacity-80">YouTube</span>
                     </a>
@@ -106,8 +104,8 @@ if (!release) {
                         rel="noopener"
                         class="group flex flex-col items-center hover:text-yellow-400 transition"
                     >
-                        <span class="bg-neutral-800 p-5 rounded-full shadow-lg group-hover:bg-yellow-900 transition">
-                            <i class="fab fa-amazon fa-3x" />
+                        <span class="bg-neutral-800 p-6 rounded-full shadow-lg group-hover:bg-yellow-900 transition">
+                            <i class="fab fa-amazon fa-4x" />
                         </span>
                         <span class="text-sm mt-3 opacity-80">
                             Amazon Music
