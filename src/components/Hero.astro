@@ -1,39 +1,154 @@
 ---
+import { releases } from "../data/releases.js";
 
+const featuredRelease = releases[0];
 ---
 
 <section
     id="hero"
-    class="relative min-h-screen flex flex-col items-center justify-center px-6 text-center text-white"
+    class="relative min-h-screen flex items-center justify-center px-6 py-12 text-white"
 >
-    <h1 class="text-5xl sm:text-6xl font-bold mb-6 drop-shadow-md">
-        Octavio Serrago
-    </h1>
-    <p class="text-base text-gray-400 mb-8">Buenos Aires, Argentina</p>
-    <div class="flex flex-wrap justify-center gap-6">
-        <a
-            href="https://open.spotify.com/intl-es/artist/1gya1oYPjYPTIjMPGWCRAS?si=Ln_8dQ8DQnWpskhBjGm6iQ"
-            target="_blank"
-            class="flex items-center gap-2 border border-white hover:border-gray-400 text-white hover:text-gray-300 px-5 py-2 rounded-full text-lg transition"
-        >
-            <i class="fa-brands fa-spotify"></i>
-            Spotify
-        </a>
-        <a
-            href="https://www.youtube.com/@octavioserragomusic"
-            target="_blank"
-            class="flex items-center gap-2 border border-white hover:border-gray-400 text-white hover:text-gray-300 px-5 py-2 rounded-full text-lg transition"
-        >
-            <i class="fa-brands fa-youtube"></i>
-            YouTube
-        </a>
-        <a
-            href="https://www.instagram.com/octavio.serrago"
-            target="_blank"
-            class="flex items-center gap-2 border border-white hover:border-gray-400 text-white hover:text-gray-300 px-5 py-2 rounded-full text-lg transition"
-        >
-            <i class="fa-brands fa-instagram"></i>
-            Instagram
-        </a>
+    <div
+        class="absolute inset-0 bg-gradient-to-br from-neutral-950 via-neutral-900/80 to-neutral-900/40"
+    >
+    </div>
+    <div
+        class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.25),_transparent_55%)] mix-blend-screen opacity-40"
+    >
+    </div>
+
+    <div
+        class="relative z-10 grid w-full max-w-6xl gap-12 lg:grid-cols-[minmax(0,1fr),360px] items-center"
+    >
+        <div class="space-y-8">
+            <div
+                class="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.4em] text-white/70"
+            >
+                <span class="rounded-full border border-white/30 px-4 py-1"
+                    >Octavio Serrago</span
+                >
+                <span class="rounded-full border border-white/20 px-4 py-1"
+                    >Buenos Aires · Argentina</span
+                >
+            </div>
+            <div class="space-y-5">
+                <p
+                    class="text-sm font-semibold uppercase tracking-[0.4em] text-amber-200"
+                >
+                    Country · Bluegrass · Western
+                </p>
+                <h1
+                    class="text-4xl font-black leading-tight sm:text-5xl lg:text-6xl"
+                >
+                    Historias del desierto con alma porteña.
+                </h1>
+                <p class="text-base text-white/70 sm:text-lg">
+                    Sonidos cinematográficos, slide guitars y letras que viajan
+                    desde el oeste americano hasta el Río de la Plata. Cada show
+                    es una fogata nueva.
+                </p>
+            </div>
+            <div class="flex flex-wrap gap-3">
+                <a
+                    href="#music"
+                    class="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-neutral-900 transition hover:bg-neutral-200"
+                >
+                    Escucha los releases
+                    <i
+                        class="fa-solid fa-arrow-right text-xs"
+                        aria-hidden="true"></i>
+                </a>
+                <a
+                    href="mailto:octavio.serrago@gmail.com"
+                    class="inline-flex items-center gap-2 rounded-full border border-white/40 px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-white transition hover:border-white hover:bg-white/10"
+                >
+                    Booking & prensa
+                </a>
+            </div>
+            <div class="flex flex-wrap items-center gap-5 text-white/70">
+                <div class="space-y-1">
+                    <p class="text-xs uppercase tracking-[0.4em] text-white/50">
+                        Presentaciones
+                    </p>
+                    <p class="text-2xl font-semibold text-white">+120 shows</p>
+                </div>
+                <div class="space-y-1">
+                    <p class="text-xs uppercase tracking-[0.4em] text-white/50">
+                        Streams
+                    </p>
+                    <p class="text-2xl font-semibold text-white">
+                        +1M globales
+                    </p>
+                </div>
+                <div class="flex gap-3 text-2xl">
+                    <a
+                        href="https://open.spotify.com/intl-es/artist/1gya1oYPjYPTIjMPGWCRAS?si=Ln_8dQ8DQnWpskhBjGm6iQ"
+                        target="_blank"
+                        class="text-white/70 transition hover:text-white"
+                        aria-label="Spotify"
+                    >
+                        <i class="fa-brands fa-spotify"></i>
+                    </a>
+                    <a
+                        href="https://www.youtube.com/@octavioserragomusic"
+                        target="_blank"
+                        class="text-white/70 transition hover:text-white"
+                        aria-label="YouTube"
+                    >
+                        <i class="fa-brands fa-youtube"></i>
+                    </a>
+                    <a
+                        href="https://www.instagram.com/octavio.serrago"
+                        target="_blank"
+                        class="text-white/70 transition hover:text-white"
+                        aria-label="Instagram"
+                    >
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        {
+            featuredRelease && (
+                <a
+                    href={`/releases/${featuredRelease.slug}`}
+                    class="group relative flex flex-col overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 p-6 text-left backdrop-blur shadow-[0_25px_80px_rgba(0,0,0,0.45)]"
+                >
+                    <span class="text-xs uppercase tracking-[0.4em] text-white/60">
+                        Nuevo lanzamiento
+                    </span>
+                    <h2 class="mt-4 text-3xl font-bold text-white">
+                        {featuredRelease.title}
+                    </h2>
+                    <p class="text-sm uppercase tracking-[0.4em] text-amber-200">
+                        {featuredRelease.type}
+                    </p>
+                    <img
+                        src={featuredRelease.cover}
+                        alt={featuredRelease.title}
+                        class="mt-6 w-full rounded-2xl border border-white/10 bg-black object-cover shadow-lg transition duration-300 group-hover:scale-[1.02]"
+                    />
+                    <ul class="mt-6 space-y-2 text-sm text-white/80">
+                        {featuredRelease.tracks.map((track) => (
+                            <li class="flex items-center gap-2">
+                                <span
+                                    class="h-1 w-1 rounded-full bg-amber-300"
+                                    aria-hidden="true"
+                                />
+                                {track}
+                            </li>
+                        ))}
+                    </ul>
+                    <div class="mt-6 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.3em] text-white/80 transition group-hover:text-white">
+                        Ver release completo
+                        <i
+                            class="fa-solid fa-arrow-up-right-from-square text-xs"
+                            aria-hidden="true"
+                        />
+                    </div>
+                </a>
+            )
+        }
     </div>
 </section>

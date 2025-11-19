@@ -14,6 +14,47 @@ const release = releases.find((r) => r.slug === slug);
 if (!release) {
     throw new Error("Release not found");
 }
+
+const trackCount = release.tracks.length;
+const heroDescriptionMap: Record<string, string> = {
+    Single: "A focused snapshot of Octavio Serrago's cinematic storytelling, built to loop endlessly.",
+    EP: "A compact collection that unveils new textures and moods in every listen.",
+};
+const heroDescription =
+    heroDescriptionMap[release.type] ??
+    "An immersive chapter in Octavio Serrago's evolving sonic universe.";
+const trackBadge = `${trackCount} ${trackCount === 1 ? "track" : "tracks"}`;
+const streamingPlatforms = [
+    {
+        name: "Spotify",
+        icon: "fab fa-spotify",
+        accent: "from-emerald-400/40 to-transparent",
+        text: "text-emerald-200",
+        link: release.spotify,
+    },
+    {
+        name: "Apple Music",
+        icon: "fab fa-apple",
+        accent: "from-pink-400/40 to-transparent",
+        text: "text-pink-200",
+        link: release.apple,
+    },
+    {
+        name: "YouTube",
+        icon: "fab fa-youtube",
+        accent: "from-red-500/40 to-transparent",
+        text: "text-red-200",
+        link: release.youtube,
+    },
+    {
+        name: "Amazon Music",
+        icon: "fab fa-amazon",
+        accent: "from-amber-300/40 to-transparent",
+        text: "text-amber-200",
+        link: release.amazon,
+    },
+].filter((platform) => Boolean(platform.link));
+const primaryLink = streamingPlatforms[0]?.link ?? "#";
 ---
 
 <head>
@@ -21,106 +62,250 @@ if (!release) {
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     />
+    <title>{release.title} | Octavio Serrago</title>
+    <meta
+        name="description"
+        content={`Listen to ${release.title} by Octavio Serrago across every major platform.`}
+    />
 </head>
 
 <section
-    class="min-h-screen flex items-center justify-center bg-gradient-to-br from-neutral-900 via-neutral-800 to-neutral-700 px-2 py-8"
+    class="relative min-h-screen overflow-hidden bg-neutral-950 text-white"
 >
-    <div
-        class="w-full max-w-xs sm:max-w-md md:max-w-lg lg:max-w-xl bg-white/10 border border-white/10 rounded-2xl shadow-2xl p-4 sm:p-8 text-white backdrop-blur-lg mx-auto flex flex-col items-center"
-    >
+    <div class="absolute inset-0">
         <img
             src={release.cover}
-            alt={release.title}
-            class="w-64 h-64 sm:w-72 sm:h-72 md:w-80 md:h-80 object-contain rounded-xl mb-8 shadow-lg bg-neutral-900 border border-white/10"
+            alt=""
+            aria-hidden="true"
+            class="h-full w-full object-cover opacity-40 blur-3xl scale-110"
         />
-
-        <h1
-            class="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-2 tracking-tight text-center"
+        <div
+            class="absolute inset-0 bg-gradient-to-br from-neutral-950 via-neutral-900/95 to-neutral-900/80"
         >
-            {release.title}
-        </h1>
-        <p
-            class="text-xs sm:text-sm uppercase tracking-widest text-gray-400 mb-6 text-center"
+        </div>
+        <div
+            class="absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(255,255,255,0.12),_transparent_55%)]"
         >
-            {release.type}
-        </p>
+        </div>
+    </div>
 
-        <ul
-            class="mb-8 text-left list-disc list-inside text-base sm:text-lg text-gray-200 space-y-1 px-2 sm:px-4 w-full max-w-md mx-auto"
+    <div
+        class="relative z-10 mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 py-16 sm:px-6 lg:px-8 lg:py-24"
+    >
+        <div
+            class="flex flex-wrap items-center gap-3 text-xs font-semibold tracking-[0.4em] text-white/60"
         >
-            {release.tracks.map((track) => <li>{track}</li>)}
-        </ul>
+            <a
+                href="/"
+                class="flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-[0.65rem] uppercase tracking-[0.3em] text-white/70 transition hover:border-white/40 hover:text-white"
+            >
+                <i class="fa-solid fa-arrow-left-long text-xs" aria-hidden="true" /> Inicio
+            </a>
+            <span
+                class="rounded-full border border-white/10 px-4 py-2 uppercase text-white/70"
+            >
+                Release spotlight
+            </span>
+            <span
+                class="rounded-full border border-white/10 px-4 py-2 uppercase text-white/70"
+            >
+                {trackBadge}
+            </span>
+        </div>
 
-        <div class="flex justify-center gap-6 flex-wrap w-full">
-            {
-                release.spotify && (
-                    <a
-                        href={release.spotify}
-                        target="_blank"
-                        rel="noopener"
-                        class="group flex flex-col items-center hover:text-green-400 transition"
+        <div class="grid gap-12 lg:grid-cols-[360px,1fr] lg:items-start">
+            <div class="space-y-6">
+                <div
+                    class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/5 shadow-[0_45px_120px_rgba(0,0,0,0.55)]"
+                >
+                    <div
+                        class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent"
+                        aria-hidden="true"
                     >
-                        <span class="bg-neutral-800 p-5 rounded-full shadow-lg group-hover:bg-green-900 transition">
-                            <i class="fab fa-spotify fa-2x sm:fa-3x md:fa-4x" />
-                        </span>
-                        <span class="text-xs sm:text-sm mt-2 opacity-80">
-                            Spotify
-                        </span>
-                    </a>
-                )
-            }
-            {
-                release.apple && (
-                    <a
-                        href={release.apple}
-                        target="_blank"
-                        rel="noopener"
-                        class="group flex flex-col items-center hover:text-pink-400 transition"
+                    </div>
+                    <img
+                        src={release.cover}
+                        alt={release.title}
+                        class="relative z-10 h-full w-full object-cover"
+                    />
+                    <div
+                        class="absolute top-5 left-5 z-20 rounded-full bg-black/70 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-white/80"
                     >
-                        <span class="bg-neutral-800 p-5 rounded-full shadow-lg group-hover:bg-pink-900 transition">
-                            <i class="fab fa-apple fa-2x sm:fa-3x md:fa-4x" />
-                        </span>
-                        <span class="text-xs sm:text-sm mt-2 opacity-80">
-                            Apple Music
-                        </span>
-                    </a>
-                )
-            }
-            {
-                release.youtube && (
-                    <a
-                        href={release.youtube}
-                        target="_blank"
-                        rel="noopener"
-                        class="group flex flex-col items-center hover:text-red-500 transition"
+                        {release.type}
+                    </div>
+                    <div
+                        class="absolute bottom-5 left-5 z-20 flex items-center gap-3 rounded-full bg-black/70 px-4 py-2 text-xs uppercase tracking-[0.3em] text-white/60"
                     >
-                        <span class="bg-neutral-800 p-5 rounded-full shadow-lg group-hover:bg-red-900 transition">
-                            <i class="fab fa-youtube fa-2x sm:fa-3x md:fa-4x" />
-                        </span>
-                        <span class="text-xs sm:text-sm mt-2 opacity-80">
-                            YouTube
-                        </span>
-                    </a>
-                )
-            }
-            {
-                release.amazon && (
-                    <a
-                        href={release.amazon}
-                        target="_blank"
-                        rel="noopener"
-                        class="group flex flex-col items-center hover:text-yellow-400 transition"
+                        Octavio Serrago
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 text-sm">
+                    <div
+                        class="rounded-2xl border border-white/10 bg-white/5 px-5 py-4"
                     >
-                        <span class="bg-neutral-800 p-5 rounded-full shadow-lg group-hover:bg-yellow-900 transition">
-                            <i class="fab fa-amazon fa-2x sm:fa-3x md:fa-4x" />
-                        </span>
-                        <span class="text-xs sm:text-sm mt-2 opacity-80">
-                            Amazon Music
-                        </span>
+                        <p
+                            class="text-xs uppercase tracking-[0.3em] text-white/50"
+                        >
+                            Formato
+                        </p>
+                        <p class="text-xl font-semibold text-white">
+                            {release.type}
+                        </p>
+                    </div>
+                    <div
+                        class="rounded-2xl border border-white/10 bg-white/5 px-5 py-4"
+                    >
+                        <p
+                            class="text-xs uppercase tracking-[0.3em] text-white/50"
+                        >
+                            Pistas
+                        </p>
+                        <p class="text-xl font-semibold text-white">
+                            {trackCount}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-10">
+                <div class="space-y-6">
+                    <div
+                        class="flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-white/60"
+                    >
+                        <span
+                            class="h-[1px] w-12 bg-white/30"
+                            aria-hidden="true"></span>
+                        Octavio Serrago presenta
+                    </div>
+                    <h1
+                        class="text-4xl font-black leading-tight sm:text-5xl lg:text-6xl"
+                    >
+                        {release.title}
+                    </h1>
+                    <p class="max-w-2xl text-base text-white/70 sm:text-lg">
+                        {heroDescription}
+                    </p>
+                    {
+                        primaryLink !== "#" && (
+                            <a
+                                href={primaryLink}
+                                target="_blank"
+                                rel="noopener"
+                                class="inline-flex items-center gap-3 rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-neutral-900 transition hover:bg-neutral-200"
+                            >
+                                Escuchar ahora
+                                <i
+                                    class="fa-solid fa-arrow-up-right-from-square text-xs"
+                                    aria-hidden="true"
+                                />
+                            </a>
+                        )
+                    }
+                </div>
+
+                <div class="grid gap-6 lg:grid-cols-2">
+                    <div
+                        class="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur"
+                    >
+                        <div
+                            class="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-white/60"
+                        >
+                            <span>Tracklist</span>
+                            <span>{trackBadge}</span>
+                        </div>
+                        <ol class="mt-6 space-y-4">
+                            {
+                                release.tracks.map((track, index) => (
+                                    <li class="group flex items-start gap-4 rounded-2xl bg-white/0 px-3 py-2 transition hover:bg-white/5">
+                                        <span class="flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-sm font-semibold text-white/70 transition group-hover:border-white/40 group-hover:text-white">
+                                            {String(index + 1).padStart(2, "0")}
+                                        </span>
+                                        <div>
+                                            <p class="text-lg font-semibold text-white">
+                                                {track}
+                                            </p>
+                                            <p class="text-xs uppercase tracking-[0.3em] text-white/40">
+                                                Track {index + 1}
+                                            </p>
+                                        </div>
+                                    </li>
+                                ))
+                            }
+                        </ol>
+                    </div>
+
+                    <div
+                        class="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur"
+                    >
+                        <div
+                            class="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-white/60"
+                        >
+                            <span>Escúchalo en</span>
+                            <span>Streaming</span>
+                        </div>
+                        <div class="mt-6 grid gap-4">
+                            {
+                                streamingPlatforms.map((platform) => (
+                                    <a
+                                        href={platform.link}
+                                        target="_blank"
+                                        rel="noopener"
+                                        class={`group relative flex items-center gap-4 overflow-hidden rounded-2xl border border-white/10 bg-neutral-900/40 px-5 py-4 transition hover:border-white/40 hover:bg-neutral-900/70`}
+                                    >
+                                        <span
+                                            class={`absolute inset-0 bg-gradient-to-br ${platform.accent} opacity-0 transition group-hover:opacity-80`}
+                                            aria-hidden="true"
+                                        />
+                                        <span class="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-neutral-900/80 text-2xl text-white shadow-inner">
+                                            <i
+                                                class={`${platform.icon}`}
+                                                aria-hidden="true"
+                                            />
+                                        </span>
+                                        <div class="relative">
+                                            <p class="text-lg font-semibold text-white">
+                                                {platform.name}
+                                            </p>
+                                            <p
+                                                class={`text-xs uppercase tracking-[0.3em] ${platform.text}`}
+                                            >
+                                                Abrir plataforma
+                                            </p>
+                                        </div>
+                                        <i
+                                            class="fa-solid fa-arrow-up-right-from-square relative ml-auto text-xl text-white/70 transition group-hover:text-white"
+                                            aria-hidden="true"
+                                        />
+                                    </a>
+                                ))
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="flex flex-wrap items-center justify-between gap-4 rounded-3xl border border-white/10 bg-white/5 px-6 py-5 text-sm text-white/70"
+                >
+                    <div>
+                        <p
+                            class="text-xs uppercase tracking-[0.3em] text-white/50"
+                        >
+                            Descubre m&aacute;s
+                        </p>
+                        <p class="text-lg font-semibold text-white">
+                            Sigue explorando la discograf&iacute;a
+                        </p>
+                    </div>
+                    <a
+                        href="/"
+                        class="inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white transition hover:border-white/50"
+                    >
+                        Volver al inicio
+                        <i class="fa-solid fa-arrow-rotate-left text-xs" aria-hidden="true" />
                     </a>
-                )
-            }
+                </div>
+            </div>
         </div>
     </div>
 </section>

@@ -2,34 +2,85 @@
 import { releases } from "../data/releases.js";
 ---
 
-<section id="music" class="py-20 px-6 max-w-6xl mx-auto">
-    <h2 class="text-3xl font-bold text-center mb-12">Releases</h2>
+<section id="music" class="relative py-24 px-6">
+    <div class="mx-auto flex w-full max-w-6xl flex-col gap-12">
+        <div class="space-y-4 text-center">
+            <p class="text-xs font-semibold uppercase tracking-[0.4em] text-amber-200">
+                Discografía en expansión
+            </p>
+            <h2 class="text-4xl font-black text-white">
+                Releases que cruzan carreteras y pampas.
+            </h2>
+            <p class="mx-auto max-w-2xl text-base text-white/70">
+                Singles y EPs grabados entre Buenos Aires y Nashville, mezclando banjos, steel guitars y letras intimistas. Explora cada capítulo con el mismo espíritu libre que inspira las canciones.
+            </p>
+        </div>
 
-    <div class="overflow-x-auto scrollbar-hide">
-        <div class="flex gap-6 px-2 w-max">
-            {
-                releases.map((release) => (
-                    <a
-                        href={`/releases/${release.slug}`}
-                        class="flex-shrink-0 w-72 sm:w-80 bg-white/5 border border-white/10 rounded-xl p-4 text-white backdrop-blur-md hover:scale-105 transition-transform"
-                    >
-                        <img
-                            src={release.cover}
-                            alt={release.title}
-                            class="w-full h-48 object-contain rounded-md mb-4 bg-black"
-                        />
-                        <h3 class="text-xl font-semibold mb-2">
-                            {release.title}
-                        </h3>
-                        <p class="text-sm text-gray-400 mb-3">{release.type}</p>
-                        <ul class="list-disc list-inside text-sm text-gray-300 space-y-1">
-                            {release.tracks.map((track) => (
-                                <li>{track}</li>
-                            ))}
-                        </ul>
-                    </a>
-                ))
-            }
+        <div class="grid gap-10 lg:grid-cols-[320px,1fr]">
+            <div class="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur">
+                <h3 class="text-2xl font-semibold text-white">Ruta musical</h3>
+                <p class="text-sm text-white/70">
+                    Cada lanzamiento captura una postal distinta: amaneceres en el desierto, despedidas en el campo o viajes sin mapa. Aquí está el recorrido hasta hoy.
+                </p>
+                <ul class="space-y-4 text-sm text-white/70">
+                    {
+                        releases.map((release) => (
+                            <li class="flex items-center gap-3">
+                                <span class="h-2 w-2 rounded-full bg-amber-300" aria-hidden="true" />
+                                {release.title} · {release.type}
+                            </li>
+                        ))
+                    }
+                </ul>
+                <a
+                    href="mailto:octavio.serrago@gmail.com"
+                    class="inline-flex items-center gap-2 rounded-full border border-white/30 px-4 py-2 text-xs font-semibold uppercase tracking-[0.3em] text-white transition hover:border-white hover:bg-white/10"
+                >
+                    Reservar show
+                    <i class="fa-solid fa-star text-[0.6rem]" aria-hidden="true" />
+                </a>
+            </div>
+
+            <div class="grid gap-6 md:grid-cols-2">
+                {
+                    releases.map((release) => (
+                        <a
+                            href={`/releases/${release.slug}`}
+                            class="group flex flex-col overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-5 text-white backdrop-blur transition hover:border-white/30 hover:bg-white/10"
+                        >
+                            <div class="relative overflow-hidden rounded-2xl border border-white/10 bg-black">
+                                <img
+                                    src={release.cover}
+                                    alt={release.title}
+                                    class="h-48 w-full object-cover transition duration-300 group-hover:scale-[1.03]"
+                                />
+                                <span class="absolute top-3 left-3 rounded-full bg-black/70 px-3 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-white/80">
+                                    {release.type}
+                                </span>
+                            </div>
+                            <div class="mt-5 space-y-3">
+                                <h3 class="text-2xl font-semibold">{release.title}</h3>
+                                <ol class="space-y-1 text-sm text-white/70">
+                                    {
+                                        release.tracks.map((track, index) => (
+                                            <li>
+                                                <span class="text-white/40">{String(index + 1).padStart(2, "0")}.</span> {track}
+                                            </li>
+                                        ))
+                                    }
+                                </ol>
+                                <div class="flex items-center justify-between text-xs uppercase tracking-[0.3em] text-white/60">
+                                    <span>{release.tracks.length} tracks</span>
+                                    <span class="inline-flex items-center gap-2 text-white/80 group-hover:text-white">
+                                        Abrir release
+                                        <i class="fa-solid fa-arrow-up-right-from-square text-[0.7rem]" aria-hidden="true" />
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    ))
+                }
+            </div>
         </div>
     </div>
 </section>

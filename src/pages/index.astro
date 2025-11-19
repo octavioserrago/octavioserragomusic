@@ -1,8 +1,6 @@
 ---
 import Hero from "../components/Hero.astro";
-import About from "../components/About.astro";
 import Music from "../components/Music.astro";
-import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.astro";
 import "../styles/global.css";
 ---
@@ -39,8 +37,79 @@ import "../styles/global.css";
         <!-- Hero Section -->
         <Hero />
 
+        <!-- Story Section -->
+        <section class="mx-auto flex w-full max-w-5xl flex-col gap-8 px-6 py-16 text-white">
+            <div class="grid gap-8 lg:grid-cols-3">
+                <div class="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+                    <p class="text-xs uppercase tracking-[0.4em] text-amber-200">
+                        Manifiesto sonoro
+                    </p>
+                    <h3 class="mt-3 text-2xl font-semibold">
+                        Corridos criollos con pulso cinematográfico.
+                    </h3>
+                    <p class="mt-3 text-sm text-white/70">
+                        Banjos, slide guitars y percusiones mínimas mezclan country clásico con poesía pampeana para contar historias nocturnas y de carretera.
+                    </p>
+                </div>
+                <div class="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+                    <p class="text-xs uppercase tracking-[0.4em] text-amber-200">
+                        En vivo
+                    </p>
+                    <h3 class="mt-3 text-2xl font-semibold">
+                        Shows íntimos y festivales federales.
+                    </h3>
+                    <p class="mt-3 text-sm text-white/70">
+                        Más de 120 presentaciones entre Buenos Aires y el interior, fogonazos acústicos, ferias camperas y noches a la intemperie junto a nuevas voces del folk.
+                    </p>
+                </div>
+                <div class="rounded-3xl border border-white/10 bg-white/5 p-6 backdrop-blur">
+                    <p class="text-xs uppercase tracking-[0.4em] text-amber-200">
+                        En el estudio
+                    </p>
+                    <h3 class="mt-3 text-2xl font-semibold">
+                        Produciendo el próximo disco.
+                    </h3>
+                    <p class="mt-3 text-sm text-white/70">
+                        Actualmente trabajando en un álbum de estudio para 2025, con arreglos analógicos y colaboraciones sorpresa. Escribime si querés sumarte al proceso.
+                    </p>
+                </div>
+            </div>
+        </section>
+
         <!-- Music Section -->
         <Music />
+
+        <!-- Contact CTA -->
+        <section class="px-6 pb-20">
+            <div class="mx-auto flex w-full max-w-5xl flex-col gap-6 rounded-3xl border border-white/10 bg-white/5 p-8 text-center text-white backdrop-blur">
+                <p class="text-xs font-semibold uppercase tracking-[0.4em] text-amber-200">
+                    Booking & prensa
+                </p>
+                <h3 class="text-3xl font-bold">
+                    ¿Querés llevar este viaje a tu escenario o medio?
+                </h3>
+                <p class="text-white/70">
+                    Escribime para coordinar fechas, sesiones acústicas, entrevistas o sincronizaciones.
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a
+                        href="mailto:octavio.serrago@gmail.com"
+                        class="inline-flex items-center gap-3 rounded-full bg-white px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-neutral-900 transition hover:bg-neutral-200"
+                    >
+                        Contactar
+                        <i class="fa-solid fa-envelope text-xs" aria-hidden="true" />
+                    </a>
+                    <a
+                        href="https://www.instagram.com/octavio.serrago"
+                        target="_blank"
+                        class="inline-flex items-center gap-3 rounded-full border border-white/40 px-6 py-3 text-sm font-semibold uppercase tracking-[0.3em] text-white transition hover:border-white hover:bg-white/10"
+                    >
+                        Instagram
+                        <i class="fa-brands fa-instagram text-base" aria-hidden="true" />
+                    </a>
+                </div>
+            </div>
+        </section>
 
         <!-- Footer -->
         <Footer />
